@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+// import user from '../reducers/user';
+// import rootReducer from '../reducers';
+import userInfoAction from '../actions';
 
 class Login extends React.Component {
   constructor() {
@@ -23,6 +27,7 @@ class Login extends React.Component {
 
   render() {
     const { emailInput, passwordInput } = this.state;
+    const { sendUserInfo } = this.props;
     const MIN_PASSWORD_LENGTH = 6;
     return (
       <>
@@ -64,6 +69,7 @@ class Login extends React.Component {
                 disabled={ passwordInput.length < MIN_PASSWORD_LENGTH
                  || !emailInput.includes('@') || !emailInput.includes('.com') }
                 type="button"
+                onClick={ () => sendUserInfo(this.state) }
               >
                 Entrar
 
@@ -77,7 +83,11 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  sendUserInfo: (value) => dispatch(user(value)),
+  sendUserInfo: (value) => dispatch(userInfoAction(value)),
 });
+
+Login.propTypes = {
+  sendUserInfo: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Login);

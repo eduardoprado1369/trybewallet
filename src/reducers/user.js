@@ -1,14 +1,15 @@
 const INITIAL_STATE = {
-  emailInput: '',
-  passwordInput: '',
+  email: '',
+  password: '',
 };
 
 function user(state = INITIAL_STATE, action) {
   switch (action.type) {
   case 'USER_INFO':
     return { ...state,
-      emailInput: action.emailInput,
-      passwordInput: action.passwordInput };
+      email: action.payload.user.emailInput,
+      password: action.payload.user.passwordInput,
+    };
   default:
     return state;
   }
