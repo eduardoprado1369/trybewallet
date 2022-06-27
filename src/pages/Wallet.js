@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import { thunkCurrencies } from '../actions';
 import ExpensesForm from './ExpensesForm';
+import ExpensesTable from './ExpensesTable';
 // import mapStateToProps from 'react-redux/lib/connect/mapStateToProps';
 
 class Wallet extends React.Component {
@@ -18,6 +19,7 @@ class Wallet extends React.Component {
         <div>TrybeWallet</div>
         <Header />
         <ExpensesForm />
+        <ExpensesTable />
       </>);
   }
 }
